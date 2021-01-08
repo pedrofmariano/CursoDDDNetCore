@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    expose:
+        - "3308"
+    environment:
+      MYSQL_DATABASE: curso_ddd
+    # MYSQL_USER: rootroot #pois não pode ser chamado apenas de root
+    #  MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - mysql-compose-network
+
+networks:
+  mysql-compose-network:
+    driver: bridge
